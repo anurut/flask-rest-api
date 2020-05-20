@@ -19,6 +19,7 @@ app.config['JWT_AUTH_URL_RULE'] = '/login'
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(weeks=2)
 
 api = Api(app)
+db.init_app(app)
 
 
 @app.before_first_request
@@ -35,5 +36,5 @@ api.add_resource(Store, '/store/<string:name>')
 api.add_resource(UserRegister, '/register')
 
 if __name__ == '__main__':
-    db.init_app(app)
+
     app.run(debug=True)
